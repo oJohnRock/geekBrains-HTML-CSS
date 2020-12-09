@@ -230,3 +230,76 @@ body {
 		}
 	}
 }
+
+
+/*Блок Category*/
+.category {
+	width: 100%;
+	padding: 100px 0;
+
+	&__wrap {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	&__item:not(:last-child) {
+		margin-bottom: 20px;
+	}
+
+	&__link {
+		position: relative;
+		display: block;
+		background-color: $copy-color;
+		background-repeat: no-repeat;
+		background-size: cover;
+		min-width: 560px;
+
+		&-1 {
+			background-image: url('../img/category/category_1.jpg');
+			min-height: 542px;
+		}
+		&-2 {
+			background-image: url('../img/category/category_2.jpg');
+			min-height: 261px;
+		}
+		&-3 {
+			background-image: url('../img/category/category_3.jpg');
+			min-height: 261px;
+		}
+		&-4 {
+			background-image: url('../img/category/category_4.jpg');
+			min-height: 542px;
+		}
+	}
+
+	&__title-wrap {
+		position: absolute;
+		top: 25px;
+		left: 0;
+		background-color: #fff;
+		padding: 15px 20px;
+		text-transform: uppercase;
+	}
+
+	&__suptitle {
+		display: inline-block;
+		@extend %Lato-900;
+		font-size: 18px;
+		letter-spacing: 0.025em;
+		color: $title-color;
+		margin-bottom: 5px;
+	}
+
+	&__title {
+		@extend %Lato-900;
+		letter-spacing: 0.025em;
+		font-size: 30px;
+		color: $accent-color;
+	}
+}
