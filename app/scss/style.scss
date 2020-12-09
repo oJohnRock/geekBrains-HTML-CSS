@@ -48,6 +48,7 @@ body {
 .header {
 	width: 100%;
 	padding: 25px 0;
+	border-bottom: 1px solid #ececec;
 
 	&__wrap {
 		display: flex;
@@ -163,3 +164,69 @@ body {
 	}
 }
 
+
+/*Блок main-nav*/
+.main-nav {
+	width: 100%;
+
+	&__wrap {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__list {
+		display: flex;
+		list-style-type: none;
+	}
+
+	&__link {
+		display: inline-block;
+		padding: 20px;
+		color: $title-color;
+		text-decoration: none;
+		@extend %Lato-700;
+		text-transform: uppercase;
+	}
+}
+
+
+/*Блок main-slider*/
+.main-slider {
+	width: 100%;
+	min-height: 665px;
+	background-color: $copy-color;
+	background-image: url('../img/slider/slider_bg.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding-top: 225px;
+
+	&__title {
+		position: relative;
+		@extend %Lato-900;
+
+		letter-spacing: 0.025em;
+		color: $title-color;
+		font-size: 40px;
+		padding-left: 25px;
+
+		&--lg {
+			font-size: 60px;
+		}
+
+		&--pink {
+			color: $accent-color;
+		}
+
+		&::before {
+			position: absolute;
+			display: block;
+			content: "";
+			background-color: $accent-color;
+			width: 12px;
+			height: 92px;
+			left: 0;
+			bottom: 0;
+		}
+	}
+}
