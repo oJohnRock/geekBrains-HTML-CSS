@@ -57,7 +57,8 @@ function build() {
     'app/**/*.html',
     'app/css/**/*.min.css',
     'app/js/**/*.min.js',
-    'app/img/**/*'
+    'app/img/**/*',
+    'app/fonts/**/*'
     ], { base: 'app'})
   .pipe( dest('dist') );
 }
