@@ -22,6 +22,7 @@ $text-color: #898989;
 .container {
 	max-width: 1140px;
 	margin: 0 auto;
+	outline: 1px solid red;
 }
 body {
 	@include Lato();
@@ -243,7 +244,7 @@ body {
 			font-size: 60px;
 		}
 
-		&--pink {
+		&--accent {
 			color: $accent-color;
 		}
 
@@ -524,5 +525,88 @@ body {
 			background-color: $text-color;
 			color: $title-color;
 		}
+	}
+}
+
+
+/*блок feature*/
+.feature {
+	width: 100%;
+	padding: 100px 0;
+
+	&__wrap {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__bg {
+		min-width: 767px;
+		max-height: 529px;
+		background-image: url('../img/feature/feature_bg_overflow.png'),
+		                  url('../img/feature/feature_bg.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		padding: 145px 40px;
+	}
+
+	&__link	{
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+			text-decoration-color: #fff;
+		}
+	}
+
+	&__title {
+		@include Lato(700, 32px);
+		line-height: 1.2;
+		letter-spacing: 0.3px;
+		color: #ffffff;
+
+		&--lg {
+			font-size: 53px;
+		}
+
+		&--accent {
+			color: $accent-color;
+		}
+	}
+
+	&__list {
+		max-width: 373px;
+		background-color: $title-color;
+		padding: 45px 40px 65px 35px;
+		color: #fff;
+	}
+
+	&__item {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+
+		&:not(:last-child) {
+			margin-bottom: 30px;
+		}
+	}
+
+	&__item-icon {
+		margin-right: 33px;
+	}
+
+	&__item-text {
+		padding-top: 7px;
+		max-width: 275px;
+	}
+
+	&__name {
+		@include Lato(700, 20px);
+		margin-bottom: 15px;
+	}
+
+	&__desc {
+		@include Lato(300);
+		line-height: 20px;
+		letter-spacing: 0.3px;
 	}
 }
