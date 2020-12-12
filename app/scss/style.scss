@@ -1,32 +1,17 @@
 @import url('fonts.min.css');
-%Lato-i {
-	font-family: 'Lato', sans-serif;
-	font-style: italic;
-	font-weight: 400;
-}
-%Lato-300 {
-	font-family: 'Lato', sans-serif;
-	font-weight: 300;
-}
-%Lato-400 {
-	font-family: 'Lato', sans-serif;
-	font-weight: 400;
-}
-%Lato-700 {
-	font-family: 'Lato', sans-serif;
-	font-weight: 700;
-}
-%Lato-900 {
-	font-family: 'Lato', sans-serif;
-	font-weight: 900;
-}
 
 /*Цвета*/
 $title-color: #222222;
 $accent-color: #f16d7f;
-$text-color: #9f9f9f;
-$footer-text-color: #898989;
-$copy-color: #7a7a7a;
+$text-color: #898989;
+
+/*Примеси*/
+@mixin Lato($fw: 400, $fz: 14px, $fs: normal) {
+	font-family: 'Lato', sans-serif;
+	font-size: $fz;
+	font-weight: $fw;
+	font-style: $fs;
+}
 
 /*Базовые настройки*/
 *,
@@ -39,8 +24,7 @@ $copy-color: #7a7a7a;
 	margin: 0 auto;
 }
 body {
-	@extend %Lato-400;
-	font-size: 14px;
+	@include Lato();
 }
 
 
@@ -61,6 +45,10 @@ body {
 		align-items: center;
 	}
 
+	&__logo {
+		margin-right: 35px;
+	}
+
 	&__cart {
 		margin-right: 25px;
 
@@ -74,10 +62,14 @@ body {
 		display: flex;
 		justify-content: space-between;
 		background-color: $accent-color;
+		min-width: 130px;
+		min-height: 38px;
 		color: #fff;
 		padding: 12px;
 		padding-left: 20px;
+		letter-spacing: 0.3px;
 		text-decoration: none;
+		transition: .2s;
 
 		&::after {
 			display: block;
@@ -87,30 +79,32 @@ body {
       font-size: 14px;
       margin-left: 8px;
 		}
-	}
-}
 
-.logo {
-	margin-right: 35px;
+		&:hover {
+			background-color: $text-color;
+			color: $title-color;
+		}
+	}
 }
 
 .search-form {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	max-height: 38px;
+	min-height: 38px;
 	border: 1px solid #e6e6e6;
 	border-radius: 3px;
 
 	&__browse-btn {
+		@include Lato(300);
 		display: flex;
 		justify-content: space-between;
-		@extend %Lato-300;
-		letter-spacing: 0.025em;
+		letter-spacing: 0.3px;
 		color: $title-color;
 		text-decoration: none;
 		padding: 10px 8px 10px 15px;
-		height: 36px;
+		min-height: 36px;
+		min-width: 90px;
 		background-color: #f8f8f8;
 		border: none;
 		border-right: 1px solid #e6e6e6;
@@ -132,17 +126,22 @@ body {
 	}
 
 	&__input-query {
-		@extend %Lato-300;
-		letter-spacing: 0.025em;
+		@include Lato(300);
+		letter-spacing: 0.3px;
 		padding: 10px 15px;
 		min-width: 315px;
-		height: 36px;
+		min-height: 36px;
 		background-color: #ffffff;
 		border: none;
 		border-right: 1px solid #e6e6e6;
 
 		&::placeholder {
-			color: #a4a4a4;
+			color: $text-color;
+		}
+
+		&:focus {
+			outline: none;
+			box-shadow: inset 0 0 3px #000;
 		}
 	}
 
@@ -152,9 +151,10 @@ body {
 		align-items: center;
 		padding: 10px 12px;
 		background-color: #f8f8f8;
-		color: #a4a4a4;
+		color: $text-color;
 		border: none;
 		height: 36px;
+		cursor: pointer;
 		transition: .2s;
 
 		&:hover {
@@ -181,12 +181,43 @@ body {
 	}
 
 	&__link {
+		@include Lato(700);
+		position: relative;
 		display: inline-block;
 		padding: 20px;
 		color: $title-color;
 		text-decoration: none;
-		@extend %Lato-700;
 		text-transform: uppercase;
+
+		&::after {
+			position: absolute;
+			display: block;
+			content: "";
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 0;
+			height: 3px;
+			background-color: $title-color;
+			opacity: 0;
+			transition: .2s;
+		}
+
+		&:hover::after {
+			width: 100%;
+			opacity: 1;
+		}
+
+		&--active {
+			pointer-events: none;
+			color: $text-color;
+
+			&::after {
+				width: 100%;
+				background-color: $text-color;
+				opacity: 1;
+			}
+		}
 	}
 }
 
@@ -195,19 +226,17 @@ body {
 .main-slider {
 	width: 100%;
 	min-height: 665px;
-	background-color: $copy-color;
+	background-color: $text-color;
 	background-image: url('../img/slider/slider_bg.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	padding-top: 225px;
 
 	&__title {
+		@include Lato(900, 40px);
 		position: relative;
-		@extend %Lato-900;
-
 		letter-spacing: 0.025em;
 		color: $title-color;
-		font-size: 40px;
 		padding-left: 25px;
 
 		&--lg {
@@ -248,14 +277,22 @@ body {
 		justify-content: space-between;
 	}
 
-	&__item:not(:last-child) {
-		margin-bottom: 20px;
+	&__item {
+		transition: .2s;
+
+		&:hover {
+			box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.15);
+		}
+
+		&:not(:last-child) {
+			margin-bottom: 20px;
+		}
 	}
 
 	&__link {
 		position: relative;
 		display: block;
-		background-color: $copy-color;
+		background-color: $text-color;
 		background-repeat: no-repeat;
 		background-size: cover;
 		min-width: 560px;
@@ -288,18 +325,204 @@ body {
 	}
 
 	&__suptitle {
+		@include Lato(900, 18px);
 		display: inline-block;
-		@extend %Lato-900;
-		font-size: 18px;
 		letter-spacing: 0.025em;
 		color: $title-color;
 		margin-bottom: 5px;
 	}
 
 	&__title {
-		@extend %Lato-900;
+		@include Lato(900, 30px);
 		letter-spacing: 0.025em;
-		font-size: 30px;
 		color: $accent-color;
+	}
+}
+
+
+/*Блок product*/
+.product {
+	width: 100%;
+
+	&__wrap {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__title {
+		@include Lato(700, 30px);
+		letter-spacing: 0.3px;
+		color: $title-color;
+		margin-bottom: 10px;
+	}
+
+	&__desc {
+		letter-spacing: 0.3px;
+		color: $text-color;
+		margin-bottom: 60px;
+	}
+
+	&__list {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	&__item {
+		min-width: 263px;
+
+		&:hover {
+			box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.15);
+
+			& .product__rate {
+				opacity: 1;
+			}
+		}
+
+		&:not(:nth-child(4n)) {
+			margin-right: 29px;
+		}
+
+		&:not(:nth-last-child(4)) {
+			margin-bottom: 30px;
+		}
+	}
+
+	&__photo {
+		position: relative;
+		width: 100%;
+		min-height: 281px;
+		background-repeat: no-repeat;
+		background-size: cover;
+
+		&-1 {
+			background-image: url('../img/product/product_item_1.jpg');
+		}
+		&-2 {
+			background-image: url('../img/product/product_item_2.jpg');
+		}
+		&-3 {
+			background-image: url('../img/product/product_item_3.jpg');
+		}
+		&-4 {
+			background-image: url('../img/product/product_item_4.jpg');
+		}
+		&-5 {
+			background-image: url('../img/product/product_item_5.jpg');
+		}
+		&-6 {
+			background-image: url('../img/product/product_item_6.jpg');
+		}
+		&-7 {
+			background-image: url('../img/product/product_item_7.jpg');
+		}
+		&-8 {
+			background-image: url('../img/product/product_item_8.jpg');
+		}
+	}
+
+	&__overflow {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(58,56,56,0.83);
+		opacity: 0;
+		transition: .2s;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+
+	&__cart-link {
+		@include Lato(700, 13px);
+		position: absolute;
+		display: flex;
+		align-items: center;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 100px;
+		color: #ffffff;
+		padding: 10px;
+		text-decoration: none;
+		vertical-align: middle;
+		border: 1px solid #fff;
+		transition: .2s;
+
+		&:hover {
+			background-color: #fff;
+			color: $title-color;
+		}
+	}
+
+	&__cart-icon {
+		width: 23px;
+		height: 22px;
+		margin-right: 8px;
+	}
+
+	&__text-wrap {
+		padding: 20px 15px;
+	}
+
+	&__name {
+		@include Lato(400, 13px);
+		display: inline-block;
+		text-transform: uppercase;
+		color: $title-color;
+		margin-bottom: 15px;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	&__price-wrap {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__price {
+		@include Lato(700, 16px);
+		text-transform: uppercase;
+		color: $accent-color;
+	}
+
+	&__rate {
+		font-size: 15px;
+		color: #e4af48;
+		letter-spacing: -3px;
+		opacity: 0;
+		transition: .2s;
+	}
+
+	&__all-link-btn {
+		@include Lato(700, 16px);
+		display: flex;
+		justify-content: space-between;
+		padding: 15px 25px;
+		min-width: 210px;
+		margin-top: 60px;
+		background-color: $accent-color;
+		letter-spacing: 0.3px;
+		text-decoration: none;
+		color: #ffffff;
+		transition: .2s;
+
+		&::after {
+			display: block;
+      content: '\f30b';
+      font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+      font-weight: 900;
+      font-size: 14px;
+      margin-left: 8px;
+		}
+
+		&:hover {
+			background-color: $text-color;
+			color: $title-color;
+		}
 	}
 }
