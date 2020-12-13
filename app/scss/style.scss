@@ -74,7 +74,7 @@ body {
 
 		&::after {
 			display: block;
-      content: '\f0d7';
+      content: '\f0da';
       font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
       font-weight: 900;
       font-size: 14px;
@@ -96,16 +96,9 @@ body {
 	border: 1px solid #e6e6e6;
 	border-radius: 3px;
 
-	&__browse-menu {
-		position: relative;
-
-		&[open] .search-form__browse-btn::after {
-			content: '\f0da';
-		}
-	}
-
 	&__browse-btn {
 		@include Lato(300);
+		position: relative;
 		display: flex;
 		justify-content: space-between;
 		letter-spacing: 0.3px;
@@ -121,21 +114,26 @@ body {
 
 		&::after {
 			display: block;
-      content: '\f0d7';
+      content: '\f0da';
       font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
       font-weight: 900;
       font-size: 14px;
       margin-left: 8px;
 		}
 
-		&::-webkit-details-marker {
-			display: none;
-		}
-
 		&:hover {
 			background-color: $accent-color;
 			color: #fff;
 			cursor: pointer;
+
+			&::after {
+				content: '\f0d7';
+			}
+
+			& .search-form__list-wrap {
+				display: block;
+				opacity: 1;
+			}
 		}
 
 		&:focus {
@@ -150,13 +148,15 @@ body {
 
 	&__list-wrap {
 		position: absolute;
-		left: 0;
+		display: none;
 		bottom: 0;
+		left: 0;
 		transform: translateY(100%);
 		padding: 20px 15px;
 		background-color: #fff;
 		min-width: 262px;
 		z-index: 10;
+		opacity: 0;
 
 		&:hover {
 			box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.15);
@@ -164,12 +164,11 @@ body {
 
 		&::before {
 			position: absolute;
-			display: block;
 			content: "";
 			width: 16px;
 			height: 14px;
 			top: -14px;
-			left: 65px;
+			left: 68px;
 			border-left: 8px solid transparent;
 			border-right: 8px solid transparent;
 			border-top: 7px solid transparent;
@@ -425,8 +424,8 @@ body {
 }
 
 
-/*Блок product*/
-.product {
+/*Блок main-product*/
+.main-product {
 	width: 100%;
 
 	&__wrap {
@@ -460,7 +459,7 @@ body {
 		&:hover {
 			box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.15);
 
-			& .product__rate {
+			& .main-product__rate {
 				opacity: 1;
 			}
 		}
@@ -1048,6 +1047,83 @@ body {
 			font-weight: 700;
 			color: $accent-color;
 			pointer-events: none;
+		}
+	}
+}
+
+
+/*блок product*/
+.product {
+	width: 100%;
+	padding-top: 60px;
+	padding-bottom: 110px;
+
+	&__wrap {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__type {
+		cursor: pointer;
+		margin-bottom: 50px;
+
+		&[open] .product__type-name {
+			color: $accent-color;
+		}
+
+		&[open] .product__type-name::after {
+			content: '\f0d7';
+		}
+
+		&[open] .product__type-list {
+			height: auto;
+			display: block;
+			opacity: 1;
+		}
+	}
+
+	&__type-name {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		min-width: 245px;
+		padding: 10px;
+		border-left: 5px solid $accent-color;
+		text-transform: uppercase;
+		transition: .2s;
+
+		&::-webkit-details-marker {
+			display: none;
+		}
+
+		&::after {
+			display: block;
+      content: '\f0d8';
+      font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+      font-weight: 900;
+      font-size: 14px;
+      margin-left: 8px;
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	&__type-link {
+		display: block;
+		padding: 10px 15px;
+		text-decoration: none;
+		color: $text-color;
+
+		&:hover {
+			background-color: $accent-color;
+			color: #fff;
+		}
+
+		&:active {
+			background-color: $text-color;
+			color: $title-color;
 		}
 	}
 }
