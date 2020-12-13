@@ -215,7 +215,7 @@ body {
 
 			&::after {
 				width: 100%;
-				background-color: $text-color;
+				background-color: $accent-color;
 				opacity: 1;
 			}
 		}
@@ -748,6 +748,116 @@ body {
 
 		&--active {
 			background-color: $accent-color;
+		}
+	}
+}
+
+
+/*блок footer*/
+.footer {
+	width: 100%;
+}
+
+.about {
+	width: 100%;
+	padding-top: 110px;
+	padding-bottom: 90px;
+
+	&__wrap {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__desc {
+		max-width: 430px;
+	}
+
+	&__logo-link {
+		display: inline-block;
+		margin-bottom: 30px;
+	}
+
+	&__desc-text {
+		@include Lato(300);
+		line-height: 24px;
+		letter-spacing: 0.3px;
+		color: $text-color;
+
+		&:not(:last-child) {
+			margin-bottom: 20px;
+		}
+	}
+
+	&__title {
+		@include Lato(700, 18px);
+		letter-spacing: 0.3px;
+		color: $accent-color;
+		margin-bottom: 45px;
+	}
+
+	&__item:not(:last-child) {
+		margin-bottom: 30px;
+	}
+
+	&__link {
+		@include Lato(400, 16px);
+		letter-spacing: 0.3px;
+		color: $text-color;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+			color: $accent-color;
+		}
+	}
+}
+
+.copy {
+	width: 100%;
+	padding: 25px 0;
+	background-color: #e6e6e6;
+
+	&__wrap {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__text {
+		@include Lato(400, 16px);
+		letter-spacing: 0.3px;
+		color: $text-color;
+	}
+}
+
+.social {
+	&__wrap {
+		display: flex;
+	}
+
+	&__item:not(:last-child) {
+		margin-right: 8px;
+	}
+
+	&__link {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: $text-color;
+		background-color: #fff;
+		font-size: 16px;
+		width: 32px;
+		height: 32px;
+		text-decoration: none;
+		transition: .2s;
+
+		&:hover {
+			background-color: $accent-color;
+			color: #fff;
+		}
+
+		&:active {
+			opacity: .3;
 		}
 	}
 }
