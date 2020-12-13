@@ -95,6 +95,14 @@ body {
 	border: 1px solid #e6e6e6;
 	border-radius: 3px;
 
+	&__browse-menu {
+		position: relative;
+
+		&[open] .search-form__browse-btn::after {
+			content: '\f0da';
+		}
+	}
+
 	&__browse-btn {
 		@include Lato(300);
 		display: flex;
@@ -119,9 +127,84 @@ body {
       margin-left: 8px;
 		}
 
+		&::-webkit-details-marker {
+			display: none;
+		}
+
 		&:hover {
 			background-color: $accent-color;
 			color: #fff;
+			cursor: pointer;
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		&:active {
+			background-color: $text-color;
+			color: $title-color;
+		}
+	}
+
+	&__list-wrap {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		transform: translateY(100%);
+		padding: 20px 15px;
+		background-color: #fff;
+		min-width: 262px;
+		z-index: 10;
+
+		&:hover {
+			box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.15);
+		}
+
+		&::before {
+			position: absolute;
+			display: block;
+			content: "";
+			width: 16px;
+			height: 14px;
+			top: -14px;
+			left: 65px;
+			border-left: 8px solid transparent;
+			border-right: 8px solid transparent;
+			border-top: 7px solid transparent;
+			border-bottom: 7px solid #fff;
+		}
+	}
+
+	&__menu-list:not(:last-child) {
+		margin-top: 5px;
+		margin-bottom: 20px;
+	}
+
+	&__menu-title {
+		text-transform: uppercase;
+		letter-spacing: 0.3px;
+		color: $title-color;
+		padding-bottom: 10px;
+		border-bottom: 1px solid #e8e8e8;
+	}
+
+	&__menu-link {
+		display: block;
+		padding: 7px;
+		letter-spacing: 0.3px;
+		color: $title-color;
+		text-decoration: none;
+		transition: .2s;
+
+		&:hover {
+			background-color: $accent-color;
+			color: #fff;
+		}
+
+		&:active {
+			background-color: $text-color;
+			color: $title-color;
 		}
 	}
 
@@ -657,10 +740,11 @@ body {
 	&__form {
 		display: flex;
 		min-height: 46px;
-		min-width: 334px;
+		min-width: 385px;
 	}
 
 	&__email {
+		min-width: 280px;
 		min-height: 46px;
 		background-color: #e1e1e1;
 		border-radius: 23px 0 0 23px;
@@ -796,18 +880,26 @@ body {
 	}
 
 	&__item:not(:last-child) {
-		margin-bottom: 30px;
+		margin-bottom: 5px;
 	}
 
 	&__link {
 		@include Lato(400, 16px);
+		display: block;
 		letter-spacing: 0.3px;
 		color: $text-color;
 		text-decoration: none;
+		padding: 10px;
+		transition: .2s;
 
 		&:hover {
-			text-decoration: underline;
-			color: $accent-color;
+			background-color: $accent-color;
+			color: #fff;
+		}
+
+		&:active {
+			background-color: $text-color;
+			color: $title-color;
 		}
 	}
 }
@@ -859,5 +951,52 @@ body {
 		&:active {
 			opacity: .3;
 		}
+	}
+}
+
+
+
+/*Страница product*/
+/*Блок product-feature*/
+.product-feature {
+	width: 100%;
+	background-color: $title-color;
+	padding-top: 90px;
+	padding-bottom: 110px;
+
+	&__list {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__item {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		max-width: 360px;
+	}
+
+	&__item-icon {
+		margin-bottom: 30px;
+	}
+
+	&__item-text {
+		text-align: center;
+	}
+
+	&__name {
+		@include Lato(700, 20px);
+		letter-spacing: 0.3px;
+		color: #fff;
+		margin-bottom: 15px;
+	}
+
+	&__desc {
+		@include Lato(300);
+		line-height: 24px;
+		letter-spacing: 0.3px;
+		color: #fff;
 	}
 }
