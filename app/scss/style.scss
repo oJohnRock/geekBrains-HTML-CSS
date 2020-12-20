@@ -1636,3 +1636,228 @@ body {
 		}
 	}
 }
+
+
+/*Single page*/
+/*Блок слайдер*/
+.photo-slider {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	padding-top: 10px;
+	padding-bottom: 40px;
+	background-color: #f7f7f7;
+	border: 1px solid #eaeaea;
+
+	&__arrow-btn {
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 47px;
+		height: 47px;
+		top: 50%;
+		transform: translateY(-50%);
+		background-color: rgba(42,42,42,0.14);
+		text-decoration: none;
+		font-size: 24px;
+		color: #fff;
+		transition: .2s;
+
+		&--prev {
+			left: 0;
+		}
+
+		&--next {
+			right: 0;
+		}
+	}
+}
+
+
+/*Блок prod-desc*/
+.prod-desc {
+	&__wrap {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 0 250px;
+		padding-top: 70px;
+		padding-bottom: 120px;
+		position: relative;
+		top: -80px;
+		border: 1px solid #eaeaea;
+		background-color: #fff;
+	}
+
+	&__suptitle {
+		@include Lato(700);
+		position: relative;
+		color: $accent-color;
+		padding-bottom: 15px;
+		border-bottom: 1px solid #eaeaea;
+		margin-bottom: 25px;
+
+		&::after {
+			position: absolute;
+			display: block;
+			content: "";
+			width: 65px;
+			height: 3px;
+			background-color: $accent-color;
+			bottom: 0;
+			left: 50%;
+			transform: translate(-50%, 50%);
+		}
+	}
+
+	&__title {
+		@include Lato(900, 18px);
+		text-transform: uppercase;
+		color: $title-color;
+		margin-bottom: 50px;
+	}
+
+	&__text {
+		@include Lato(300);
+		color: $text-color;
+		text-align: center;
+		margin-bottom: 25px;
+	}
+
+	&__inner {
+		display: flex;
+		margin-bottom: 35px;
+	}
+
+	&__source {
+		@include Lato(700);
+		text-transform: uppercase;
+		color: #b9b9b9;
+		
+		&:not(:last-child) {
+			margin-right: 45px;
+		}
+	}
+
+	&__source-name {
+		color: #2f2f2f;
+	}
+
+	&__price {
+		@include Lato(700, 24px);
+		color: $accent-color;
+		margin-bottom: 40px;
+	}
+}
+
+.option-filter {
+	width: 100%;
+	padding: 0 50px;
+	padding-top: 60px;
+	border-top: 1px solid #eaeaea;
+
+	&__wrap {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 30px;
+	}
+
+	&__name {
+		@include Lato(700);
+		color: #2f2f2f;
+		margin-bottom: 15px;
+	}
+
+	&__input {
+		@include Lato(400, 13px);
+		color: #bcbcbc;
+		min-width: 144px;
+		background-color: #ffffff;
+		border: 1px solid #eaeaea;
+		padding: 10px 15px;
+	}
+
+	&__option {
+		padding: 10px 15px;
+	}
+
+	&__red {
+		display: inline-block;
+		width: 12px;
+		height: 12px;
+		background-color: $accent-color;
+	}
+
+	&__blue {
+		display: inline-block;
+		width: 12px;
+		height: 12px;
+		background-color: blue;
+	}
+
+	&__green {
+		display: inline-block;
+		width: 12px;
+		height: 12px;
+		background-color: green;
+	}
+
+	&__btn {
+		@include Lato(700, 16px);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: $text-color;
+		width: 100%;
+		padding: 15px;
+		background-color: #ffffff;
+		border: 1px solid $text-color;
+
+		&:hover {
+			border-color: $accent-color;
+			color: $accent-color;
+		}
+	}
+
+	&__btn-icon {
+		width: 26px;
+		height: 24px;
+		margin-right: 15px;
+	}
+}
+
+
+/*Блок addition*/
+.addition {
+	width: 100%;
+	padding: 70px 0;
+
+	&__wrap {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	&__title {
+		@include Lato(900, 24px);
+		text-transform: uppercase;
+		color: $title-color;
+		margin-bottom: 70px;
+	}
+
+	&__photo {
+		&-1 {
+			background-image: url('../img/product/addition_photo_1.jpg');
+		}
+		&-2 {
+			background-image: url('../img/product/addition_photo_2.jpg');
+		}
+		&-3 {
+			background-image: url('../img/product/addition_photo_3.jpg');
+		}
+		&-4 {
+			background-image: url('../img/product/addition_photo_4.jpg');
+		}
+	}
+}
