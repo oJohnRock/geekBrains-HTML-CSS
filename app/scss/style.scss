@@ -1861,3 +1861,169 @@ body {
 		}
 	}
 }
+
+
+/*Блок reaquest*/
+.request {
+	width: 100%;
+	padding-top: 60px;
+	padding-bottom: 90px;
+
+	&__item {
+		border-bottom: 1px solid #e8e8e8;
+	}
+
+	&__head {
+		padding: 30px 0;
+		cursor: pointer;
+		transition: .2s;
+
+		&::-webkit-details-marker {
+			display: none;
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		&:hover {
+			background-color: #e8e8e8;
+		}
+	}
+
+	&__title {
+		@include Lato(700, 16px);
+		text-transform: uppercase;
+		color: $title-color;
+	}
+
+	&__inner {
+		padding: 0 35px;
+		padding-bottom: 90px;
+		display: flex;
+	}
+
+	&__form {
+		width: 50%;
+	}
+
+	&__act-text {
+		font-size: 13px;
+		text-transform: uppercase;
+		color: $title-color;
+		margin-bottom: 10px;
+	}
+
+	&__desc-text {
+		font-size: 13px;
+		color: #b3b2b2;
+		margin-bottom: 25px;
+	}
+
+	&__radio-wrap {
+		margin-bottom: 25px;
+	}
+
+	&__radio-text {
+		position: relative;
+		display: block;
+		padding-left: 28px;
+		font-size: 12px;
+		text-transform: uppercase;
+		color: $title-color;
+		margin-bottom: 15px;
+		cursor: pointer;
+
+		&::before {
+			position: absolute;
+			display: block;
+			content: "";
+			width: 14px;
+			height: 14px;
+			border: 2px solid #555555;
+			border-radius: 50%;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		&::after {
+			position: absolute;
+			display: none;
+			content: "";
+			width: 8px;
+			height: 8px;
+			border: 1px solid #fff;
+			border-radius: 50%;
+			padding: 2px;
+			background-color: #000;
+			left: 3px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+	}
+
+	&__radio {
+		display: none;
+
+		&[checked] + .request__radio-text::after {
+			display: block;
+		}
+	}
+
+	&__other-text {
+		font-size: 13px;
+		color: #b3b2b2;
+		margin-bottom: 10px;
+	}
+
+	&__submit {
+		@include Lato(700);
+		display: inline-block;
+		text-align: center;
+		text-transform: uppercase;
+		color: $title-color;
+		min-width: 180px;
+		padding: 15px;
+		margin-top: 35px;
+		background-color: #ffffff;
+		border: 1px solid #eaeaea;
+		cursor: pointer;
+
+		&:hover {
+			border-color: $accent-color;
+			color: $accent-color;
+		}
+	}
+
+	&__input {
+		display: block;
+		min-width: 390px;
+		padding: 10px;
+		background-color: #ffffff;
+		border: 1px solid #eaeaea;
+		margin-bottom: 15px;
+	}
+
+	&__input-text {
+		display: block;
+		font-size: 12px;
+		color: $title-color;
+		text-transform: uppercase;
+		margin-bottom: 10px;
+	}
+
+	&__forgot {
+		display: inline-block;
+		color: $title-color;
+		text-decoration: none;
+		padding: 15px;
+		margin-left: 15px;
+		min-width: 180px;
+
+		&:hover {
+			text-decoration: underline;
+			color: $accent-color;
+		}
+	}
+}
