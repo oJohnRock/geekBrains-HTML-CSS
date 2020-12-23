@@ -630,9 +630,12 @@ body {
 
 	&__item {
 		min-width: 263px;
+		background-color: #fff;
 
 		&:hover {
 			box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.15);
+			transform: scale(1.1) rotate(180deg);
+			z-index: 10;
 
 			& .main-product__rate {
 				opacity: 1;
@@ -2024,6 +2027,249 @@ body {
 		&:hover {
 			text-decoration: underline;
 			color: $accent-color;
+		}
+	}
+}
+
+
+/*Блок shopping-cart*/
+.cart {
+	padding: 80px 0;
+}
+
+.purchase {
+	&__title-list {
+		display: flex;
+		justify-content: space-between;
+		padding-bottom: 20px;
+		border-bottom: 1px solid #eaeaea;
+	}
+
+	&__title-item {
+		@include Lato(700, 13px);
+		text-transform: uppercase;
+		letter-spacing: -0.015em;
+		color: $title-color;
+
+		&:nth-child(1) {
+			min-width: 450px;
+		}
+	}
+
+	&__product-item {
+		display: flex;
+		border-bottom: 1px solid #eaeaea;
+		padding: 20px 0;
+		justify-content: space-between;
+		align-items: center;
+		transition: .2s;
+
+		&:hover {
+			background-color: #eaeaea;
+		}
+	}
+
+	&__product-wrap {
+		display: flex;
+		justify-content: flex-start;
+		min-width: 450px;
+	}
+
+	&__product-photo {
+		width: 100px;
+		height: 115px;
+		margin-right: 20px;
+	}
+
+	&__product-desc {
+		padding: 10px 0;
+		vertical-align: top;
+	}
+
+	&__product-name {
+		font-size: 13px;
+		text-transform: uppercase;
+		color: $title-color;
+		margin-bottom: 35px;
+	}
+
+	&__product-property {
+		font-size: 13px;
+		color: #575757;
+		line-height: 20px;	
+	}
+
+	&__product-property-val {
+		font-weight: 300;
+		color: #6f6e6e;
+	}
+
+	&__product-price {
+		font-size: 13px;
+		color: #656565;
+	}
+
+	&__product-count {
+		width: 54px;
+		height: 30px;
+		background-color: #ffffff;
+		border: 1px solid #eaeaea;
+		text-align: center;
+		font-size: 13px;
+		color: #656565;
+		padding: 10px;
+	}
+
+	&__product-shipping {
+		font-size: 13px;
+		color: #656565;
+	}
+
+	&__product-subtotal {
+		font-size: 13px;
+		color: #656565;
+	}
+
+	&__delete-btn {
+		border: none;
+		background-color: transparent;
+		color: $text-color;
+		cursor: pointer;
+		min-width: 35px;
+	}
+
+	&__btn-wrap {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__btn-link {
+		@include Lato(700);
+		padding: 20px;
+		text-transform: uppercase;
+		color: #4a4a4a;
+		min-width: 235px;
+		background-color: #ffffff;
+		border: 1px solid #eaeaea;
+		text-align: center;
+		margin-top: 45px;
+		text-decoration: none;
+
+		&:hover {
+			border-color: $accent-color;
+			color: $accent-color;
+		}
+	}
+}
+
+.order-form {
+	display: flex;
+	justify-content: space-between;
+	align-items: start;
+	margin-top: 60px;
+
+	&__title {
+		@include Lato(700, 16px);
+		text-transform: uppercase;
+		color: $title-color;
+		margin-bottom: 20px;
+	}
+
+	&__input {
+		@include Lato(300, 13px);
+		min-width: 355px;
+		padding: 15px;
+		margin-bottom: 20px;
+		background-color: #ffffff;
+		border: 1px solid #eaeaea;
+
+		&::placeholder {
+			color: #b1b1b1;
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	&__country {
+		color: #b1b1b1;
+		cursor: pointer;
+	}
+
+	&__btn {
+		display: block;
+		@include Lato(700, 11px);
+		text-transform: uppercase;
+		color: #4a4a4a;
+		min-width: 100px;
+		padding: 10px;
+		background-color: #ffffff;
+		border: 1px solid #eaeaea;
+		cursor: pointer;
+
+		&:hover {
+			border-color: $accent-color;
+			color: $accent-color;
+		}
+	}
+
+	&__desc {
+		@include Lato(300);
+		color: #000000;
+		margin-top: 30px;
+		margin-bottom: 25px;
+	}
+
+	&__checkout {
+		min-width: 360px;
+		background-color: #f5f3f3;
+		padding: 40px 45px;
+		margin-left: 35px;
+	}
+
+	&__checkout-inner {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		padding-bottom: 20px;
+		border-bottom: 1px solid #e2e2e2;
+		margin-bottom: 20px;
+	}
+
+	&__subtotal {
+		font-size: 11px;
+		text-transform: uppercase;
+		color: #4a4a4a;
+		margin-bottom: 15px;
+	}
+
+	&__subtotal-price {
+		margin-left: 20px;
+	}
+
+	&__grandtotal {
+		@include Lato(700, 16px);
+		text-transform: uppercase;
+		color: $title-color;
+	}
+
+	&__grandtotal-price {
+		color: $accent-color;
+	}
+
+	&__proceed-btn {
+		@include Lato(700, 16px);
+		text-transform: uppercase;
+		color: #ffffff;
+		min-width: 273px;
+		background-color: #f16d7f;
+		padding: 20px;
+		border: none;
+		cursor: pointer;
+
+		&:hover {
+			background-color: $text-color;
 		}
 	}
 }
